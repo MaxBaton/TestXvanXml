@@ -1,4 +1,4 @@
-package com.maxbay.studentapp.ui.recycler
+package com.maxbay.testxvan.ui.recycler
 
 import android.graphics.Rect
 import android.view.View

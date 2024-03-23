@@ -1,4 +1,4 @@
-package com.maxbay.studentapp.ui.utils
+package com.maxbay.testxvan.ui.utils
 
 import android.app.Activity
 import android.content.Context

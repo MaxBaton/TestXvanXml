@@ -5,17 +5,14 @@ plugins {
 }
 
 android {
-    namespace = "com.maxbay.testxvan.core.ui"
+    namespace = "com.maxbay.testxvan.navigation"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
 
-        android.buildFeatures.buildConfig = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildFeatures.buildConfig = true
 
     buildTypes {
         debug {
@@ -43,9 +40,5 @@ android {
 
 dependencies {
     implementation(libs.core.ktx)
-
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.google.material)
 }
