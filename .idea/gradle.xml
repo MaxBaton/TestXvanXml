@@ -15,6 +15,12 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/navigation" />
             <option value="$PROJECT_DIR$/core/ui" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/bottomMenu" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/tab_api" />
           </set>
         </option>
       </GradleProjectSettings>

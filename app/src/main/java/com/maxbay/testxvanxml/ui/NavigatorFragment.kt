@@ -13,8 +13,15 @@ import com.maxbay.testxvan.navigation.Navigator
 import com.maxbay.testxvanxml.R
 
 class NavigatorFragment: Fragment(R.layout.fragment_navigator), NavigatorHolder {
-    private val navigatorLifecycle: NavigatorLifecycle = DaggerAppProvider.appComponent.navigatorLifecycle
-    private val navigator: Navigator = DaggerAppProvider.appComponent.navigator
+    private val navigatorLifecycle: NavigatorLifecycle by lazy {
+        DaggerAppProvider.appComponent.navigatorLifecycle
+    }
+    private val navigator: Navigator by lazy {
+        DaggerAppProvider.appComponent.navigator
+    }
+    private val bottomMenuHostFeatureApi by lazy {
+        DaggerAppProvider.appComponent.bottomMenuHostFeatureApi
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +32,7 @@ class NavigatorFragment: Fragment(R.layout.fragment_navigator), NavigatorHolder 
         super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState == null) {
-//            navigator.open(fragment = authHostFeatureApi.open())
+            navigator.open(fragment = bottomMenuHostFeatureApi.open())
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(

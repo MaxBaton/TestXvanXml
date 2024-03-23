@@ -17,3 +17,6 @@ rootProject.name = "TestXvanXml"
 include(":app")
 include(":core:ui")
 include(":core:navigation")
+include(":features:bottomMenu:host:presentation")
+include(":features:bottomMenu:host:api")
+include(":features:bottomMenu:host:tab_api")
