@@ -23,6 +23,8 @@
             <option value="$PROJECT_DIR$/features/bottomMenu/host/tab_api" />
             <option value="$PROJECT_DIR$/features/bottomMenu/location" />
             <option value="$PROJECT_DIR$/features/bottomMenu/location/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/data" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/domain" />
             <option value="$PROJECT_DIR$/features/bottomMenu/location/presentation" />
             <option value="$PROJECT_DIR$/features/bottomMenu/money" />
             <option value="$PROJECT_DIR$/features/bottomMenu/money/api" />

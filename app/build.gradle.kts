@@ -59,6 +59,8 @@ dependencies {
     implementation(project(":features:bottomMenu:table:presentation"))
     implementation(project(":features:bottomMenu:location:api"))
     implementation(project(":features:bottomMenu:location:presentation"))
+    implementation(project(":features:bottomMenu:location:domain"))
+    implementation(project(":features:bottomMenu:location:data"))
 
     implementation(libs.core.ktx)
 

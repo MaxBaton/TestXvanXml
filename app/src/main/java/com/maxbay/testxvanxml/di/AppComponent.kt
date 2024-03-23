@@ -5,6 +5,8 @@ import com.maxbay.bottommenu.host.api.BottomMenuHostFeatureApi
 import com.maxbay.bottommenu.host.presentation.models.TabFeaturesApi
 import com.maxbay.presentation.di.BottomMenuHostFeatureDeps
 import com.maxbay.testviewpager.navigation.NavigatorLifecycle
+import com.maxbay.testxvan.di.modules.RepositoryModule
+import com.maxbay.testxvan.di.modules.StorageModule
 import com.maxbay.testxvan.navigation.Navigator
 import com.maxbay.testxvanxml.di.modules.FeaturesModule
 import com.maxbay.testxvanxml.di.modules.NavigationModule
@@ -16,7 +18,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         NavigationModule::class,
-        FeaturesModule::class
+        FeaturesModule::class,
+        StorageModule::class,
+        RepositoryModule::class
     ]
 )
 interface AppComponent: BottomMenuHostFeatureDeps {
