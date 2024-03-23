@@ -51,6 +51,8 @@ dependencies {
     implementation(project(":features:bottomMenu:host:api"))
     implementation(project(":features:bottomMenu:host:presentation"))
     implementation(project(":features:bottomMenu:host:tab_api"))
+    implementation(project(":features:bottomMenu:settings:api"))
+    implementation(project(":features:bottomMenu:settings:presentation"))
 
     implementation(libs.core.ktx)
 

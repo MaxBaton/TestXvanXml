@@ -5,7 +5,7 @@
         <item name="android:textSize">50sp</item>
         <item name="fontWeight">300</item>
         <item name="lineHeight">65sp</item>
-        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:textColor">?attr/colorPrimaryContainer</item>
     </style>
 
     <style name="TitleLarge" parent="TextAppearance.Material3.TitleLarge">
@@ -13,7 +13,7 @@
         <item name="android:textSize">40sp</item>
         <item name="fontWeight">400</item>
         <item name="lineHeight">40sp</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorPrimaryContainer</item>
     </style>
 
     <style name="TitleMedium" parent="TextAppearance.Material3.TitleMedium">
@@ -21,7 +21,7 @@
         <item name="android:textSize">37sp</item>
         <item name="fontWeight">400</item>
         <item name="lineHeight">48sp</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorPrimaryContainer</item>
     </style>
 
     <style name="BodyMedium" parent="TextAppearance.Material3.BodyMedium">
@@ -29,6 +29,6 @@
         <item name="android:textSize">29sp</item>
         <item name="fontWeight">500</item>
         <item name="lineHeight">20sp</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorPrimaryContainer</item>
     </style>
 </resources>
