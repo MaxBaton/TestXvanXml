@@ -7,6 +7,8 @@ import com.maxbay.money.api.MoneyFeatureApi
 import com.maxbay.money.presentation.api.MoneyFeatureApiImpl
 import com.maxbay.settings.api.SettingsFeatureApi
 import com.maxbay.settings.presentation.api.SettingsFeatureApiImpl
+import com.maxbay.table.api.TableFeatureApi
+import com.maxbay.table.presentation.api.TableFeatureApiImpl
 import dagger.Module
 import dagger.Provides
 
@@ -20,12 +22,14 @@ class FeaturesModule {
     @Provides
     fun provideTabFeaturesApi(
         settingsFeatureApi: SettingsFeatureApi,
-        moneyFeatureApi: MoneyFeatureApi
+        moneyFeatureApi: MoneyFeatureApi,
+        tableFeatureApi: TableFeatureApi
     ): TabFeaturesApi {
         return TabFeaturesApi(
             featuresApi = listOf(
                 settingsFeatureApi,
-                moneyFeatureApi
+                moneyFeatureApi,
+                tableFeatureApi
             )
         )
     }
@@ -38,5 +42,10 @@ class FeaturesModule {
     @Provides
     fun provideMoneyFeatureApi(): MoneyFeatureApi {
         return MoneyFeatureApiImpl()
+    }
+
+    @Provides
+    fun provideTableFeatureApi(): TableFeatureApi {
+        return TableFeatureApiImpl()
     }
 }

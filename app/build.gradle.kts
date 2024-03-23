@@ -55,6 +55,8 @@ dependencies {
     implementation(project(":features:bottomMenu:settings:presentation"))
     implementation(project(":features:bottomMenu:money:api"))
     implementation(project(":features:bottomMenu:money:presentation"))
+    implementation(project(":features:bottomMenu:table:api"))
+    implementation(project(":features:bottomMenu:table:presentation"))
 
     implementation(libs.core.ktx)
 

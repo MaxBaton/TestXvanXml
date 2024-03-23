@@ -27,6 +27,9 @@
             <option value="$PROJECT_DIR$/features/bottomMenu/settings" />
             <option value="$PROJECT_DIR$/features/bottomMenu/settings/api" />
             <option value="$PROJECT_DIR$/features/bottomMenu/settings/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table/presentation" />
           </set>
         </option>
       </GradleProjectSettings>
