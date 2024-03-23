@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="aime">#EEE5E0</color>
+    <color name="lead">#212020</color>
+    <color name="maui_mist">#EDF3F4</color>
+    <color name="deep_sea_grey">#869495</color>
+    <color name="grey_nurse">#CFD2CC</color>
+    <color name="angry_pasta">#FECE57</color>
+    <color name="fuzzy_wuzzy">#CE6666</color>
+
+</resources>

@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TestXvanXml"
 include(":app")
- 
+include(":core:ui")

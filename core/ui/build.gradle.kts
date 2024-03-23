@@ -1,20 +1,16 @@
+@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    id("kotlin-kapt")
-    alias(libs.plugins.devtools.ksp)
 }
 
 android {
-    namespace = "com.maxbay.testxvanxml"
+    namespace = "com.maxbay.studentapp.ui"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.maxbay.testxvanxml"
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = libs.versions.versionCode.get().toInt()
-        versionName = libs.versions.versionName.get()
+
         android.buildFeatures.buildConfig = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,34 +42,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:ui"))
-
     implementation(libs.core.ktx)
-
-    implementation(libs.lifecycle.runtime.ktx)
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.recyclerview)
     implementation(libs.google.material)
-
-    implementation(libs.kotlinx.collections.immutable)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.lifecycle.viewmodel.ktx)
-
-    // tests
-    testImplementation(libs.junit)
-    testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-
-    // Dagger
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
-    // room
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
 }

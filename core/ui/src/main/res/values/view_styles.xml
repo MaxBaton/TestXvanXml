@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StudentAppGuideLineVerticalCenter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="layout_constraintGuide_percent">0.5</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+</resources>
