@@ -3,6 +3,8 @@ package com.maxbay.testxvanxml.di.modules
 import com.maxbay.bottommenu.host.api.BottomMenuHostFeatureApi
 import com.maxbay.bottommenu.host.presentation.api.BottomMenuHostFeatureApiImpl
 import com.maxbay.bottommenu.host.presentation.models.TabFeaturesApi
+import com.maxbay.money.api.MoneyFeatureApi
+import com.maxbay.money.presentation.api.MoneyFeatureApiImpl
 import com.maxbay.settings.api.SettingsFeatureApi
 import com.maxbay.settings.presentation.api.SettingsFeatureApiImpl
 import dagger.Module
@@ -17,15 +19,24 @@ class FeaturesModule {
 
     @Provides
     fun provideTabFeaturesApi(
-        settingsFeatureApi: SettingsFeatureApi
+        settingsFeatureApi: SettingsFeatureApi,
+        moneyFeatureApi: MoneyFeatureApi
     ): TabFeaturesApi {
         return TabFeaturesApi(
-            featuresApi = listOf(settingsFeatureApi)
+            featuresApi = listOf(
+                settingsFeatureApi,
+                moneyFeatureApi
+            )
         )
     }
 
     @Provides
     fun provideSettingsFeatureApi(): SettingsFeatureApi {
         return SettingsFeatureApiImpl()
+    }
+
+    @Provides
+    fun provideMoneyFeatureApi(): MoneyFeatureApi {
+        return MoneyFeatureApiImpl()
     }
 }

@@ -21,6 +21,9 @@
             <option value="$PROJECT_DIR$/features/bottomMenu/host/api" />
             <option value="$PROJECT_DIR$/features/bottomMenu/host/presentation" />
             <option value="$PROJECT_DIR$/features/bottomMenu/host/tab_api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money/presentation" />
             <option value="$PROJECT_DIR$/features/bottomMenu/settings" />
             <option value="$PROJECT_DIR$/features/bottomMenu/settings/api" />
             <option value="$PROJECT_DIR$/features/bottomMenu/settings/presentation" />
