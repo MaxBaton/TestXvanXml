@@ -7,4 +7,5 @@ interface LocationRepository {
     suspend fun savePhotosByLocation(locationId: Int, photosUriStr: List<String>)
     suspend fun observeSections(): Flow<List<Section>>
     suspend fun updateSectionName(sectionId: Int, newName: String)
+    suspend fun deletePhotos(photosId: List<Int>)
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.maxbay.location.domain.useCase.DeletePhotosUseCase
 import com.maxbay.location.domain.useCase.GetPhotoFileNameUseCase
 import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
@@ -23,7 +24,8 @@ class LocationViewModel(
     private val updateSectionNameUseCase: UpdateSectionNameUseCase,
     private val writeBitmapToFile: WriteBitmapToFile,
     private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase,
-    private val uiMapper: UiMapper
+    private val uiMapper: UiMapper,
+    private val deletePhotosUseCase: DeletePhotosUseCase
 ): ViewModel() {
     private val _sections = MutableLiveData<List<SectionUi>>()
     val sections: LiveData<List<SectionUi>>
@@ -33,7 +35,7 @@ class LocationViewModel(
     val screen: LiveData<Screen>
         get() = _screen
 
-    private val _photosInDeleteModeCount = MutableLiveData<MutableList<Int>>(mutableListOf())
+    private val _photosInDeleteMode = MutableLiveData<MutableList<Int>>(mutableListOf())
 
     init {
         observeSections()
@@ -90,7 +92,7 @@ class LocationViewModel(
     }
 
     fun changePhotoDeleteModeByClick(photoId: Int, isInDeleteMode: Boolean) {
-        if (_photosInDeleteModeCount.value?.isNotEmpty() == true) {
+        if (_photosInDeleteMode.value?.isNotEmpty() == true) {
             changePhotoDeleteMode(photoId, isInDeleteMode)
         }
     }
@@ -101,13 +103,13 @@ class LocationViewModel(
                 sections = sections,
                 photoId = photoId,
                 isInDeleteMode = isInDeleteMode,
-                isLastPhotoInDeleteMode = _photosInDeleteModeCount.value?.size == 1
+                isLastPhotoInDeleteMode = _photosInDeleteMode.value?.size == 1
             ))
 
             if (isInDeleteMode) {
-                _photosInDeleteModeCount.value?.remove(photoId)
+                _photosInDeleteMode.value?.remove(photoId)
             }else{
-                _photosInDeleteModeCount.value?.add(photoId)
+                _photosInDeleteMode.value?.add(photoId)
             }
         }
     }
@@ -159,6 +161,13 @@ class LocationViewModel(
     }
 
     fun deleteSelectedPhotos() {
+        val exceptionHandler = CoroutineExceptionHandler { _, _ ->
 
+        }
+
+        viewModelScope.launch(exceptionHandler) {
+            deletePhotosUseCase.execute(photosId = _photosInDeleteMode.value!!)
+            _photosInDeleteMode.postValue(mutableListOf())
+        }
     }
 }

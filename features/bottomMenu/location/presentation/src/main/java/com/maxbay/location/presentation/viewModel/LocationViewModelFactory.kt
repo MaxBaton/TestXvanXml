@@ -2,6 +2,7 @@ package com.maxbay.location.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.maxbay.location.domain.useCase.DeletePhotosUseCase
 import com.maxbay.location.domain.useCase.GetPhotoFileNameUseCase
 import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
@@ -17,7 +18,8 @@ class LocationViewModelFactory(
     private val updateSectionNameUseCase: UpdateSectionNameUseCase,
     private val writeBitmapToFile: WriteBitmapToFile,
     private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase,
-    private val uiMapper: UiMapper
+    private val uiMapper: UiMapper,
+    private val deletePhotosUseCase: DeletePhotosUseCase
 ): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return LocationViewModel(
@@ -26,7 +28,8 @@ class LocationViewModelFactory(
             updateSectionNameUseCase = updateSectionNameUseCase,
             writeBitmapToFile = writeBitmapToFile,
             getPhotoFileNameUseCase = getPhotoFileNameUseCase,
-            uiMapper = uiMapper
+            uiMapper = uiMapper,
+            deletePhotosUseCase = deletePhotosUseCase
         ) as T
     }
 }

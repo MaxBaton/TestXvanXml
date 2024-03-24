@@ -3,6 +3,7 @@ package com.maxbay.location.presentation.di
 import android.content.ContentResolver
 import android.content.Context
 import com.maxbay.location.domain.repository.LocationRepository
+import com.maxbay.location.domain.useCase.DeletePhotosUseCase
 import com.maxbay.location.domain.useCase.GetPhotoFileNameUseCase
 import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
@@ -29,7 +30,8 @@ class LocationModule {
         updateSectionNameUseCase: UpdateSectionNameUseCase,
         writeBitmapToFile: WriteBitmapToFile,
         getPhotoFileNameUseCase: GetPhotoFileNameUseCase,
-        uiMapper: UiMapper
+        uiMapper: UiMapper,
+        deletePhotosUseCase: DeletePhotosUseCase
     ): LocationViewModelFactory {
         return LocationViewModelFactory(
             savePhotosByLocationUseCase = savePhotosByLocationUseCase,
@@ -37,7 +39,8 @@ class LocationModule {
             updateSectionNameUseCase = updateSectionNameUseCase,
             writeBitmapToFile = writeBitmapToFile,
             getPhotoFileNameUseCase = getPhotoFileNameUseCase,
-            uiMapper = uiMapper
+            uiMapper = uiMapper,
+            deletePhotosUseCase = deletePhotosUseCase
         )
     }
 
@@ -111,5 +114,10 @@ class LocationModule {
     @Provides
     fun provideUiMapper(photoMapper: PhotoMapper): UiMapper {
         return UiMapper(photoMapper = photoMapper)
+    }
+
+    @Provides
+    fun provideDeletePhotosUseCase(locationRepository: LocationRepository): DeletePhotosUseCase {
+        return DeletePhotosUseCase(locationRepository = locationRepository)
     }
 }

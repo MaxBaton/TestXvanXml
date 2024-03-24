@@ -55,4 +55,7 @@ interface LocationDao {
         + "${SectionEntity.NAME} = :name where ${SectionEntity.ID} = :id"
     )
     fun updateSectionNameById(id: Int, name: String)
+
+    @Query("delete from ${PhotoEntity.TABLE_NAME} where ${PhotoEntity.ID} in (:ids)")
+    fun deletePhotosByIds(ids: List<Int>)
 }

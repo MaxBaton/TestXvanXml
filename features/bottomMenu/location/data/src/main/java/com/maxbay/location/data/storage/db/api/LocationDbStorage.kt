@@ -63,4 +63,9 @@ class LocationDbStorage(
         locationDao.updateSectionNameById(id = sectionId, name = name)
         getAllSections()
     }
+
+    override suspend fun deletePhotos(photosId: List<Int>) {
+        locationDao.deletePhotosByIds(ids = photosId)
+        getAllSections()
+    }
 }

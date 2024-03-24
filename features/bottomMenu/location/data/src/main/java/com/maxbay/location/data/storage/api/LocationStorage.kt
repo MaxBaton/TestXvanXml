@@ -8,4 +8,5 @@ interface LocationStorage {
     suspend fun getAllSections(): Flow<List<SectionModel>>
     suspend fun savePhotosByLocation(photos: List<PhotoModelAdd>)
     suspend fun updatSectionNameById(sectionId: Int, name: String)
+    suspend fun deletePhotos(photosId: List<Int>)
 }

@@ -91,7 +91,7 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
             viewLifecycleOwner
         ) { requestKey, result ->
             if (requestKey == ConfirmDeleteDialogFragment.CONFIRM_DIALOG_REQUEST_KEY) {
-                requireContext().showShortToast(message = "delete photos")
+                locationViewModel.deleteSelectedPhotos()
             }
         }
 

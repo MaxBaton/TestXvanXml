@@ -38,4 +38,10 @@ class LocationRepositoryImpl(
             locationStorage.updatSectionNameById(sectionId = sectionId, name = newName)
         }
     }
+
+    override suspend fun deletePhotos(photosId: List<Int>) {
+        withContext(dispatcher) {
+            locationStorage.deletePhotos(photosId = photosId)
+        }
+    }
 }
