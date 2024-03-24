@@ -1,15 +1,18 @@
 package com.maxbay.testviewpager.di
 
+import android.content.ContentResolver
 import android.content.Context
 import com.maxbay.bottommenu.host.api.BottomMenuHostFeatureApi
 import com.maxbay.bottommenu.host.presentation.models.TabFeaturesApi
 import com.maxbay.location.domain.repository.LocationRepository
 import com.maxbay.location.presentation.di.LocationFeatureDeps
+import com.maxbay.location.presentation.models.bitmap.AbsolutelyFilePath
 import com.maxbay.presentation.di.BottomMenuHostFeatureDeps
 import com.maxbay.testviewpager.navigation.NavigatorLifecycle
 import com.maxbay.testxvan.di.modules.RepositoryModule
 import com.maxbay.testxvan.di.modules.StorageModule
 import com.maxbay.testxvan.navigation.Navigator
+import com.maxbay.testxvanxml.di.modules.AppModule
 import com.maxbay.testxvanxml.di.modules.FeaturesModule
 import com.maxbay.testxvanxml.di.modules.NavigationModule
 import dagger.BindsInstance
@@ -22,7 +25,8 @@ import javax.inject.Singleton
         NavigationModule::class,
         FeaturesModule::class,
         StorageModule::class,
-        RepositoryModule::class
+        RepositoryModule::class,
+        AppModule::class
     ]
 )
 interface AppComponent: BottomMenuHostFeatureDeps, LocationFeatureDeps {
@@ -32,6 +36,8 @@ interface AppComponent: BottomMenuHostFeatureDeps, LocationFeatureDeps {
 
     override val tabFeaturesApi: TabFeaturesApi
     override val locationRepository: LocationRepository
+    override val absolutelyFilePath: AbsolutelyFilePath
+    override val contentResolver: ContentResolver
 
     @Component.Builder
     interface Builder {

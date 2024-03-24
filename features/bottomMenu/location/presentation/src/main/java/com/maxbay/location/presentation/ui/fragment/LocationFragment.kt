@@ -46,15 +46,18 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
         if (it.resultCode == Activity.RESULT_OK) {
             it.data?.let { data ->
                 if (locationId != -1) {
-                    val photosUri = mutableListOf<String>()
+                    val photosUri = mutableListOf<Uri>()
 
                     val cnt = data.clipData?.itemCount ?: 0
                     for (i in 0 until cnt) {
                         val uri: Uri = data.clipData!!.getItemAt(i).uri
-                        photosUri.add(uri.toString())
+                        photosUri.add(uri)
                     }
 
-                    //
+                    locationViewModel.savePhotos(
+                        locationId = locationId,
+                        photosUri = photosUri
+                    )
                 }
             }
         }
