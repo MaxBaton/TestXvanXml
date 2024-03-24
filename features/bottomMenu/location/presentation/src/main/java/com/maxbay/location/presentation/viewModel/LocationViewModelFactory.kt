@@ -6,7 +6,9 @@ import com.maxbay.location.domain.useCase.GetPhotoFileNameUseCase
 import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
 import com.maxbay.location.domain.useCase.UpdateSectionNameUseCase
+import com.maxbay.location.presentation.logic.ReadBitmapFromFile
 import com.maxbay.location.presentation.logic.WriteBitmapToFile
+import com.maxbay.location.presentation.mapper.UiMapper
 
 @Suppress("UNCHECKED_CAST")
 class LocationViewModelFactory(
@@ -14,7 +16,8 @@ class LocationViewModelFactory(
     private val observeSectionsUseCase: ObserveSectionsUseCase,
     private val updateSectionNameUseCase: UpdateSectionNameUseCase,
     private val writeBitmapToFile: WriteBitmapToFile,
-    private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase
+    private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase,
+    private val uiMapper: UiMapper
 ): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return LocationViewModel(
@@ -22,7 +25,8 @@ class LocationViewModelFactory(
             observeSectionsUseCase = observeSectionsUseCase,
             updateSectionNameUseCase = updateSectionNameUseCase,
             writeBitmapToFile = writeBitmapToFile,
-            getPhotoFileNameUseCase = getPhotoFileNameUseCase
+            getPhotoFileNameUseCase = getPhotoFileNameUseCase,
+            uiMapper = uiMapper
         ) as T
     }
 }

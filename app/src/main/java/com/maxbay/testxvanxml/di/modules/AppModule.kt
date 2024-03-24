@@ -2,6 +2,7 @@ package com.maxbay.testxvanxml.di.modules
 
 import android.content.ContentResolver
 import android.content.Context
+import com.maxbay.location.presentation.logic.ReadBitmapFromFile
 import com.maxbay.location.presentation.models.bitmap.AbsolutelyFilePath
 import dagger.Module
 import dagger.Provides

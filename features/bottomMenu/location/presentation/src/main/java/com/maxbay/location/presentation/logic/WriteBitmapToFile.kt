@@ -8,8 +8,6 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
-private const val BASE_FOLDER_NAME = "photos"
-
 class WriteBitmapToFile(
     private val absolutelyPath: String,
     private val getBitmapFromUri: GetBitmapFromUri,
@@ -23,7 +21,7 @@ class WriteBitmapToFile(
         return withContext(dispatcher) {
             val bitmap = getBitmapFromUri.get(uri = uri)
 
-            val folder = createFolderIfNeed(folderName = BASE_FOLDER_NAME + "_" + locationId)
+            val folder = createFolderIfNeed(folderName = GetBaseFolderName.get(locationId))
             val file = File(folder, fileName)
 
             FileOutputStream(file).use { fos ->

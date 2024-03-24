@@ -6,6 +6,7 @@ import com.maxbay.bottommenu.host.api.BottomMenuHostFeatureApi
 import com.maxbay.bottommenu.host.presentation.models.TabFeaturesApi
 import com.maxbay.location.domain.repository.LocationRepository
 import com.maxbay.location.presentation.di.LocationFeatureDeps
+import com.maxbay.location.presentation.logic.ReadBitmapFromFile
 import com.maxbay.location.presentation.models.bitmap.AbsolutelyFilePath
 import com.maxbay.presentation.di.BottomMenuHostFeatureDeps
 import com.maxbay.testviewpager.navigation.NavigatorLifecycle
@@ -38,6 +39,7 @@ interface AppComponent: BottomMenuHostFeatureDeps, LocationFeatureDeps {
     override val locationRepository: LocationRepository
     override val absolutelyFilePath: AbsolutelyFilePath
     override val contentResolver: ContentResolver
+    override val context: Context
 
     @Component.Builder
     interface Builder {

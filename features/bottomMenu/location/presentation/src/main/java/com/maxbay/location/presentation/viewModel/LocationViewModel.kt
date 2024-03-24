@@ -5,14 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.maxbay.location.domain.models.Photo
 import com.maxbay.location.domain.useCase.GetPhotoFileNameUseCase
 import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
 import com.maxbay.location.domain.useCase.UpdateSectionNameUseCase
-import com.maxbay.location.presentation.logic.GetBitmapFromUri
 import com.maxbay.location.presentation.logic.WriteBitmapToFile
-import com.maxbay.location.presentation.mapper.toUI
+import com.maxbay.location.presentation.mapper.UiMapper
 import com.maxbay.location.presentation.models.screens.Screen
 import com.maxbay.location.presentation.models.setcionData.SectionUi
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -23,7 +21,8 @@ class LocationViewModel(
     private val observeSectionsUseCase: ObserveSectionsUseCase,
     private val updateSectionNameUseCase: UpdateSectionNameUseCase,
     private val writeBitmapToFile: WriteBitmapToFile,
-    private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase
+    private val getPhotoFileNameUseCase: GetPhotoFileNameUseCase,
+    private val uiMapper: UiMapper
 ): ViewModel() {
     private val _sections = MutableLiveData<List<SectionUi>>()
     val sections: LiveData<List<SectionUi>>
@@ -43,7 +42,7 @@ class LocationViewModel(
 
     fun savePhotos(locationId: Int, photosUri: List<Uri>) {
         val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-
+            val l = throwable
         }
 
         viewModelScope.launch(exceptionHandler) {
@@ -71,7 +70,7 @@ class LocationViewModel(
     private fun observeSections() {
         viewModelScope.launch {
             observeSectionsUseCase.execute().collect { sections ->
-                _sections.postValue(sections.toUI())
+                _sections.postValue(uiMapper.sectionsToUI(sections = sections))
             }
         }
     }
