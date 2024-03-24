@@ -13,13 +13,15 @@ class SectionViewHolder(
     private val onChangeSectionName: (sectionId: Int, name: String) -> Unit,
     private val onAddPhotos: (locationId: Int) -> Unit,
     private val onLongPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
-    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit
+    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onDeletePhotos: (locationId: Int) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
     private val locationAdapter by lazy {
         LocationAdapter(
             onAddPhotos = onAddPhotos,
             onLongPhotoClick = onLongPhotoClick,
-            onPhotoClick = onPhotoClick
+            onPhotoClick = onPhotoClick,
+            onDeletePhotos = onDeletePhotos
         )
     }
 

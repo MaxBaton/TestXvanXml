@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentResultListener
 import androidx.fragment.app.viewModels
 import com.maxbay.location.presentation.R
 import com.maxbay.location.presentation.databinding.FragmentLocationBinding
@@ -43,7 +44,10 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
                 locationViewModel.changePhotoDeleteMode(photoId = photoId, isInDeleteMode = isInDeleteMode)
             },
             onPhotoClick = { photoId, isInDeleteMode ->
-                locationViewModel.changePhotoDeleteMode(photoId = photoId, isInDeleteMode = isInDeleteMode)
+                locationViewModel.changePhotoDeleteModeByClick(photoId = photoId, isInDeleteMode = isInDeleteMode)
+            },
+            onDeletePhotos = { locationId ->
+                locationViewModel.confirmDeletePhotos()
             }
         )
     }
@@ -82,6 +86,15 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
             recyclerViewSections.adapter = sectionAdapter
         }
 
+        childFragmentManager.setFragmentResultListener(
+            ConfirmDeleteDialogFragment.CONFIRM_DIALOG_REQUEST_KEY,
+            viewLifecycleOwner
+        ) { requestKey, result ->
+            if (requestKey == ConfirmDeleteDialogFragment.CONFIRM_DIALOG_REQUEST_KEY) {
+                requireContext().showShortToast(message = "delete photos")
+            }
+        }
+
         locationViewModel.sections.observe(viewLifecycleOwner, this::observeSections)
         locationViewModel.screen.observe(viewLifecycleOwner, this::observeScreen)
     }
@@ -104,6 +117,14 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
             is Screen.GalleryScreen -> {
                 locationId = screen.locationId
                 openGallery()
+            }
+            Screen.ConfirmDeletePhotosDialogScreen -> {
+                ConfirmDeleteDialogFragment
+                    .newInstance()
+                    .show(
+                        childFragmentManager,
+                        ConfirmDeleteDialogFragment::class.simpleName
+                    )
             }
         }
     }

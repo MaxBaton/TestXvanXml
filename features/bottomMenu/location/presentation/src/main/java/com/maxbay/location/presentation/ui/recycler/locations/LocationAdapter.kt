@@ -9,7 +9,8 @@ import com.maxbay.location.presentation.models.setcionData.LocationUi
 class LocationAdapter(
     private val onAddPhotos: (locationId: Int) -> Unit,
     private val onLongPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
-    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit
+    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onDeletePhotos: (locationId: Int) -> Unit
 ): ListAdapter<LocationUi, LocationViewHolder>(LocationDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(
@@ -20,7 +21,8 @@ class LocationAdapter(
             ),
             onAddPhotos = onAddPhotos,
             onLongPhotoClick = onLongPhotoClick,
-            onPhotoClick = onPhotoClick
+            onPhotoClick = onPhotoClick,
+            onDeletePhotos = onDeletePhotos
         )
     }
 

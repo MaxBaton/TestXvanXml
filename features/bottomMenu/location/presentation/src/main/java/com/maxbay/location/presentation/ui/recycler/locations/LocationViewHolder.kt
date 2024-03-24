@@ -10,7 +10,8 @@ class LocationViewHolder(
     private val binding: LocationItemBinding,
     private val onAddPhotos: (locationId: Int) -> Unit,
     private val onLongPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
-    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit
+    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onDeletePhotos: (locationId: Int) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
     private val photoAdapter by lazy {
         PhotoAdapter(
@@ -24,6 +25,10 @@ class LocationViewHolder(
 
         binding.btnAdd.setOnClickListener {
             onAddPhotos.invoke(location.id)
+        }
+
+        binding.btnDelete.setOnClickListener {
+            onDeletePhotos.invoke(location.id)
         }
 
         binding.recyclerViewPhotos.adapter = photoAdapter

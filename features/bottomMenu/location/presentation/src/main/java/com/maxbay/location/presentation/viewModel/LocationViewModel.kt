@@ -33,7 +33,7 @@ class LocationViewModel(
     val screen: LiveData<Screen>
         get() = _screen
 
-    private val _photosInDeleteModeCount = MutableLiveData<Int>(0)
+    private val _photosInDeleteModeCount = MutableLiveData<MutableList<Int>>(mutableListOf())
 
     init {
         observeSections()
@@ -89,19 +89,25 @@ class LocationViewModel(
         _screen.postValue(Screen.None)
     }
 
+    fun changePhotoDeleteModeByClick(photoId: Int, isInDeleteMode: Boolean) {
+        if (_photosInDeleteModeCount.value?.isNotEmpty() == true) {
+            changePhotoDeleteMode(photoId, isInDeleteMode)
+        }
+    }
+
     fun changePhotoDeleteMode(photoId: Int, isInDeleteMode: Boolean) {
         _sections.value?.let { sections ->
             _sections.postValue(getNewSectionAfterChangeDeleteMode(
                 sections = sections,
                 photoId = photoId,
                 isInDeleteMode = isInDeleteMode,
-                isLastPhotoInDeleteMode = _photosInDeleteModeCount.value == 1
+                isLastPhotoInDeleteMode = _photosInDeleteModeCount.value?.size == 1
             ))
 
-            _photosInDeleteModeCount.value = if (isInDeleteMode) {
-                _photosInDeleteModeCount.value?.minus(1)
+            if (isInDeleteMode) {
+                _photosInDeleteModeCount.value?.remove(photoId)
             }else{
-                _photosInDeleteModeCount.value?.plus(1)
+                _photosInDeleteModeCount.value?.add(photoId)
             }
         }
     }
@@ -146,5 +152,13 @@ class LocationViewModel(
 
             section.copy(locations = newLocations)
         }
+    }
+
+    fun confirmDeletePhotos() {
+        _screen.postValue(Screen.ConfirmDeletePhotosDialogScreen)
+    }
+
+    fun deleteSelectedPhotos() {
+
     }
 }
