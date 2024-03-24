@@ -1,7 +1,7 @@
 package com.maxbay.location.presentation.ui.recycler.sections
 
 import androidx.recyclerview.widget.DiffUtil
-import com.maxbay.location.presentation.models.SectionUi
+import com.maxbay.location.presentation.models.setcionData.SectionUi
 
 class SectionDiffUtils: DiffUtil.ItemCallback<SectionUi>() {
     override fun areItemsTheSame(oldItem: SectionUi, newItem: SectionUi): Boolean {

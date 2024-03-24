@@ -3,9 +3,9 @@ package com.maxbay.location.presentation.mapper
 import com.maxbay.location.domain.models.Location
 import com.maxbay.location.domain.models.Photo
 import com.maxbay.location.domain.models.Section
-import com.maxbay.location.presentation.models.LocationUi
-import com.maxbay.location.presentation.models.PhotoUi
-import com.maxbay.location.presentation.models.SectionUi
+import com.maxbay.location.presentation.models.setcionData.LocationUi
+import com.maxbay.location.presentation.models.setcionData.PhotoUi
+import com.maxbay.location.presentation.models.setcionData.SectionUi
 import kotlinx.collections.immutable.toImmutableList
 
 private fun Photo.toUi() = PhotoUi(

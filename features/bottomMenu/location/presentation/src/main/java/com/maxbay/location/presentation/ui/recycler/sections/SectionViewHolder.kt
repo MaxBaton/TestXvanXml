@@ -5,12 +5,18 @@ import android.text.TextWatcher
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.maxbay.location.presentation.databinding.SectionItemBinding
-import com.maxbay.location.presentation.models.SectionUi
+import com.maxbay.location.presentation.models.setcionData.SectionUi
+import com.maxbay.location.presentation.ui.recycler.locations.LocationAdapter
 
 class SectionViewHolder(
     private val binding: SectionItemBinding,
-    private val onChangeSectionName: (sectionId: Int, name: String) -> Unit
+    private val onChangeSectionName: (sectionId: Int, name: String) -> Unit,
+    private val onAddPhotos: (locationId: Int) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
+    private val locationAdapter by lazy {
+        LocationAdapter(onAddPhotos = onAddPhotos)
+    }
+
     fun bind(section: SectionUi) {
         binding.etSectionName.setText(section.name, TextView.BufferType.EDITABLE)
 
@@ -26,5 +32,8 @@ class SectionViewHolder(
             override fun afterTextChanged(s: Editable?) {}
 
         })
+
+        binding.recyclerViewLocations.adapter = locationAdapter
+        locationAdapter.submitList(section.locations)
     }
 }

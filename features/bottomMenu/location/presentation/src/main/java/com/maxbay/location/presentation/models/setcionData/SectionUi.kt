@@ -1,4 +1,4 @@
-package com.maxbay.location.presentation.models
+package com.maxbay.location.presentation.models.setcionData
 
 data class SectionUi(
     val id: Int,

@@ -8,7 +8,8 @@ import com.maxbay.location.domain.useCase.ObserveSectionsUseCase
 import com.maxbay.location.domain.useCase.SavePhotosByLocationUseCase
 import com.maxbay.location.domain.useCase.UpdateSectionNameUseCase
 import com.maxbay.location.presentation.mapper.toUI
-import com.maxbay.location.presentation.models.SectionUi
+import com.maxbay.location.presentation.models.screens.Screen
+import com.maxbay.location.presentation.models.setcionData.SectionUi
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
@@ -21,12 +22,16 @@ class LocationViewModel(
     val sections: LiveData<List<SectionUi>>
         get() = _sections
 
+    private val _screen = MutableLiveData<Screen>()
+    val screen: LiveData<Screen>
+        get() = _screen
+
     init {
         observeSections()
     }
 
-    fun openGallery() {
-
+    fun openGallery(locationId: Int) {
+        _screen.postValue(Screen.GalleryScreen(locationId = locationId))
     }
 
     fun addPhotos(locationId: Int, photosUri: List<String>) {
@@ -54,5 +59,9 @@ class LocationViewModel(
         viewModelScope.launch(exceptionHandler) {
             updateSectionNameUseCase.execute(sectionId = sectionId, name = newName)
         }
+    }
+
+    fun clearState() {
+        _screen.postValue(Screen.None)
     }
 }
