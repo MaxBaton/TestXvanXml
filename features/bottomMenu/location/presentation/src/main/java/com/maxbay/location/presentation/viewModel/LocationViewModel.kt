@@ -137,7 +137,11 @@ class LocationViewModel(
                         }
                     }
                 }
-                location.copy(photos = newPhotos)
+
+                location.copy(
+                    photos = newPhotos,
+                    isInDeleteMode = !(isInDeleteMode && isLastPhotoInDeleteMode)
+                )
             }
 
             section.copy(locations = newLocations)

@@ -3,4 +3,5 @@
     <string name="ic_photo_description">Фото</string>
     <string name="btn_add_photo_description">Добавить фото</string>
     <string name="location_title">Локации</string>
+    <string name="delete">Удалить</string>
 </resources>

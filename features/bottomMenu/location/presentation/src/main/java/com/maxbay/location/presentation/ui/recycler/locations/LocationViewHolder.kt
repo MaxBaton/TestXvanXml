@@ -1,5 +1,6 @@
 package com.maxbay.location.presentation.ui.recycler.locations
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.maxbay.location.presentation.databinding.LocationItemBinding
 import com.maxbay.location.presentation.models.setcionData.LocationUi
@@ -27,5 +28,11 @@ class LocationViewHolder(
 
         binding.recyclerViewPhotos.adapter = photoAdapter
         photoAdapter.submitList(location.photos)
+
+        bindBtnDelete(isInDeleteMode = location.isInDeleteMode)
+    }
+
+    fun bindBtnDelete(isInDeleteMode: Boolean) {
+        binding.btnDelete.visibility = if (isInDeleteMode) View.VISIBLE else View.GONE
     }
 }
