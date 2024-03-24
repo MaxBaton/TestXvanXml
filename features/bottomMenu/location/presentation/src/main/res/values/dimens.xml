@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="photo_item_view_width">128dp</dimen>
+    <dimen name="photo_item_view_height">128dp</dimen>
+    <dimen name="location_item_width">460dp</dimen>
+    <dimen name="location_item_height">360dp</dimen>
+</resources>

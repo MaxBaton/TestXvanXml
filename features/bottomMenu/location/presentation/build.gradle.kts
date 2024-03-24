@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -44,5 +45,23 @@ dependencies {
     implementation(project(":features:bottomMenu:location:domain"))
 
     implementation(libs.core.ktx)
+
+    implementation(libs.lifecycle.runtime.ktx)
+
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.google.material)
+
+    implementation(libs.kotlinx.collections.immutable)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    // Glide
+    implementation(libs.glide)
+
+    // Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

@@ -1,6 +1,7 @@
 package com.maxbay.testxvanxml.app
 
 import android.app.Application
+import com.maxbay.location.presentation.di.LocationFeatureDepsProvider
 import com.maxbay.presentation.di.BottomMenuHostFeatureDepsProvider
 import com.maxbay.testviewpager.di.DaggerAppComponent
 import com.maxbay.testviewpager.di.DaggerAppProvider
@@ -19,5 +20,6 @@ class App: Application() {
 
         DaggerAppProvider.appComponent = appComponent
         BottomMenuHostFeatureDepsProvider.deps = appComponent
+        LocationFeatureDepsProvider.deps = appComponent
     }
 }

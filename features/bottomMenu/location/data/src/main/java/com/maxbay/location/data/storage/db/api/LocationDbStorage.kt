@@ -60,6 +60,6 @@ class LocationDbStorage(
 
     override suspend fun updatSectionNameById(sectionId: Int, name: String) {
         locationDao.updateSectionNameById(id = sectionId, name = name)
-//        getAllSections()
+        getAllSections()
     }
 }

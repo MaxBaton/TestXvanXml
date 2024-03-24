@@ -3,6 +3,8 @@ package com.maxbay.testviewpager.di
 import android.content.Context
 import com.maxbay.bottommenu.host.api.BottomMenuHostFeatureApi
 import com.maxbay.bottommenu.host.presentation.models.TabFeaturesApi
+import com.maxbay.location.domain.repository.LocationRepository
+import com.maxbay.location.presentation.di.LocationFeatureDeps
 import com.maxbay.presentation.di.BottomMenuHostFeatureDeps
 import com.maxbay.testviewpager.navigation.NavigatorLifecycle
 import com.maxbay.testxvan.di.modules.RepositoryModule
@@ -23,12 +25,13 @@ import javax.inject.Singleton
         RepositoryModule::class
     ]
 )
-interface AppComponent: BottomMenuHostFeatureDeps {
+interface AppComponent: BottomMenuHostFeatureDeps, LocationFeatureDeps {
     val navigatorLifecycle: NavigatorLifecycle
     val navigator: Navigator
     val bottomMenuHostFeatureApi: BottomMenuHostFeatureApi
 
     override val tabFeaturesApi: TabFeaturesApi
+    override val locationRepository: LocationRepository
 
     @Component.Builder
     interface Builder {

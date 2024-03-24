@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ic_photo_description">Фото</string>
+    <string name="btn_add_photo_description">Добавить фото</string>
+    <string name="location_title">Локации</string>
+</resources>
