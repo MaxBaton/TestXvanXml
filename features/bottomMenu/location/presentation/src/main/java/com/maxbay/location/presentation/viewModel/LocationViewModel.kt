@@ -12,6 +12,7 @@ import com.maxbay.location.domain.useCase.UpdateSectionNameUseCase
 import com.maxbay.location.presentation.logic.WriteBitmapToFile
 import com.maxbay.location.presentation.mapper.UiMapper
 import com.maxbay.location.presentation.models.screens.Screen
+import com.maxbay.location.presentation.models.setcionData.PhotoDeleteMode
 import com.maxbay.location.presentation.models.setcionData.SectionUi
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -31,6 +32,8 @@ class LocationViewModel(
     private val _screen = MutableLiveData<Screen>()
     val screen: LiveData<Screen>
         get() = _screen
+
+    private val _photosInDeleteModeCount = MutableLiveData<Int>(0)
 
     init {
         observeSections()
@@ -84,5 +87,60 @@ class LocationViewModel(
 
     fun clearState() {
         _screen.postValue(Screen.None)
+    }
+
+    fun changePhotoDeleteMode(photoId: Int, isInDeleteMode: Boolean) {
+        _sections.value?.let { sections ->
+            _sections.postValue(getNewSectionAfterChangeDeleteMode(
+                sections = sections,
+                photoId = photoId,
+                isInDeleteMode = isInDeleteMode,
+                isLastPhotoInDeleteMode = _photosInDeleteModeCount.value == 1
+            ))
+
+            _photosInDeleteModeCount.value = if (isInDeleteMode) {
+                _photosInDeleteModeCount.value?.minus(1)
+            }else{
+                _photosInDeleteModeCount.value?.plus(1)
+            }
+        }
+    }
+
+    private fun getNewSectionAfterChangeDeleteMode(
+        sections: List<SectionUi>,
+        photoId: Int,
+        isInDeleteMode: Boolean,
+        isLastPhotoInDeleteMode: Boolean
+    ): List<SectionUi> {
+        return sections.map { section ->
+            val newLocations = section.locations.map { location ->
+                val newPhotos = location.photos.map { photo ->
+                    if (photo.id == photoId) {
+                        if (!isInDeleteMode) {
+                            photo.copy(deleteMode = PhotoDeleteMode.IN_DELETE_MODE)
+                        }else {
+                            if (isLastPhotoInDeleteMode) {
+                                photo.copy(deleteMode = PhotoDeleteMode.NONE)
+                            }else {
+                                photo.copy(deleteMode = PhotoDeleteMode.INCLUDE_DELETE_MODE)
+                            }
+                        }
+                    }else {
+                        if (isInDeleteMode && isLastPhotoInDeleteMode) {
+                            photo.copy(deleteMode = PhotoDeleteMode.NONE)
+                        }else {
+                            if (photo.deleteMode == PhotoDeleteMode.IN_DELETE_MODE) {
+                                photo
+                            }else {
+                                photo.copy(deleteMode = PhotoDeleteMode.INCLUDE_DELETE_MODE)
+                            }
+                        }
+                    }
+                }
+                location.copy(photos = newPhotos)
+            }
+
+            section.copy(locations = newLocations)
+        }
     }
 }

@@ -8,8 +8,8 @@ import com.maxbay.location.presentation.models.setcionData.LocationUi
 
 class LocationAdapter(
     private val onAddPhotos: (locationId: Int) -> Unit,
-    private val onLongPhotoClick: (id: Int) -> Unit,
-    private val onPhotoClick: (id: Int) -> Unit
+    private val onLongPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit
 ): ListAdapter<LocationUi, LocationViewHolder>(LocationDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(

@@ -8,8 +8,8 @@ import com.maxbay.location.presentation.ui.recycler.photo.PhotoAdapter
 class LocationViewHolder(
     private val binding: LocationItemBinding,
     private val onAddPhotos: (locationId: Int) -> Unit,
-    private val onLongPhotoClick: (id: Int) -> Unit,
-    private val onPhotoClick: (id: Int) -> Unit
+    private val onLongPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onPhotoClick: (id: Int, isInDeleteMode: Boolean) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
     private val photoAdapter by lazy {
         PhotoAdapter(

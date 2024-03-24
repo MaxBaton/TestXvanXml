@@ -19,4 +19,28 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_location_test" />
 
+    <ImageView
+        android:id="@+id/image_view_delete_mode"
+        android:layout_width="@dimen/ic_delete_mode_width"
+        android:layout_height="@dimen/ic_delete_mode_height"
+        android:contentDescription="@string/ic_photo_description"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_launcher_background"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/image_view_photo_in_delete_mode"
+        android:layout_width="@dimen/ic_delete_mode_width"
+        android:layout_height="@dimen/ic_delete_mode_height"
+        android:contentDescription="@string/ic_photo_description"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_location_test"
+        android:visibility="gone"
+        tools:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,8 @@ import com.maxbay.location.presentation.databinding.PhotoItemBinding
 import com.maxbay.location.presentation.models.setcionData.PhotoUi
 
 class PhotoAdapter(
-    private val onLongClick: (id: Int) -> Unit,
-    private val onClick: (id: Int) -> Unit
+    private val onLongClick: (id: Int, isInDeleteMode: Boolean) -> Unit,
+    private val onClick: (id: Int, isInDeleteMode: Boolean) -> Unit
 ): ListAdapter<PhotoUi, PhotoViewHolder>(PhotoDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         return PhotoViewHolder(

@@ -2,7 +2,6 @@ package com.maxbay.location.presentation.ui.fragment
 
 import android.app.Activity
 import android.content.Intent
-import android.media.AudioManager.AudioRecordingCallback
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -40,11 +39,11 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
             onAddPhotos = { locationId ->
                 locationViewModel.openGallery(locationId = locationId)
             },
-            onLongPhotoClick = { photoId ->
-                requireContext().showShortToast(message = "on long click $photoId")
+            onLongPhotoClick = { photoId, isInDeleteMode ->
+                locationViewModel.changePhotoDeleteMode(photoId = photoId, isInDeleteMode = isInDeleteMode)
             },
-            onPhotoClick = { photoId ->
-                requireContext().showShortToast(message = "onclick $photoId")
+            onPhotoClick = { photoId, isInDeleteMode ->
+                locationViewModel.changePhotoDeleteMode(photoId = photoId, isInDeleteMode = isInDeleteMode)
             }
         )
     }

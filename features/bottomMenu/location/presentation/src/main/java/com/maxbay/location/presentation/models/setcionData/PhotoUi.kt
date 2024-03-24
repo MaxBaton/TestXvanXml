@@ -5,5 +5,11 @@ import android.graphics.Bitmap
 data class PhotoUi(
     val id: Int,
     val bitmap: Bitmap?,
-    val isInDeleteMode: Boolean = false
+    val deleteMode: PhotoDeleteMode = PhotoDeleteMode.NONE
 )
+
+enum class PhotoDeleteMode {
+    NONE,
+    INCLUDE_DELETE_MODE,
+    IN_DELETE_MODE
+}
