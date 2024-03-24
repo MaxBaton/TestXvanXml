@@ -46,6 +46,22 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":core:navigation"))
+    implementation(project(":features:bottomMenu:host:api"))
+    implementation(project(":features:bottomMenu:host:presentation"))
+    implementation(project(":features:bottomMenu:host:tab_api"))
+    implementation(project(":features:bottomMenu:settings:api"))
+    implementation(project(":features:bottomMenu:settings:presentation"))
+    implementation(project(":features:bottomMenu:money:api"))
+    implementation(project(":features:bottomMenu:money:presentation"))
+    implementation(project(":features:bottomMenu:table:api"))
+    implementation(project(":features:bottomMenu:table:presentation"))
+    implementation(project(":features:bottomMenu:location:api"))
+    implementation(project(":features:bottomMenu:location:presentation"))
+    implementation(project(":features:bottomMenu:location:domain"))
+    implementation(project(":features:bottomMenu:location:data"))
+
     implementation(libs.core.ktx)
 
     implementation(libs.lifecycle.runtime.ktx)

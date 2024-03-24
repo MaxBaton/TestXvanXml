@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -11,6 +12,29 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/navigation" />
+            <option value="$PROJECT_DIR$/core/ui" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/bottomMenu" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/host/tab_api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/data" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/domain" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/location/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/money/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/settings" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/settings/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/settings/presentation" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table/api" />
+            <option value="$PROJECT_DIR$/features/bottomMenu/table/presentation" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -40,6 +40,7 @@ javax-inject = "1"
 
 # Database
 androidx-room = "2.6.0"
+espresso-core = "3.5.1"
 
 
 [libraries]
@@ -80,6 +81,7 @@ javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "j
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
 
 [plugins]
