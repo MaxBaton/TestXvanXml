@@ -7,19 +7,29 @@ import com.maxbay.location.data.storage.db.entities.PhotoEntity
 import com.maxbay.location.data.storage.models.LocationModel
 import com.maxbay.location.data.storage.models.PhotoModelAdd
 import com.maxbay.location.data.storage.models.SectionModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.last
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.update
 
 class LocationDbStorage(
     private val locationDao: LocationDao
 ): LocationStorage {
+    private val _sectionsFlow = MutableStateFlow<List<SectionModel>>(emptyList())
+
     override suspend fun getAllSections(): Flow<List<SectionModel>> {
+        _sectionsFlow.update {
+            getSectionsFromDb()
+        }
+        return _sectionsFlow
+    }
+
+    private suspend fun getSectionsFromDb(): List<SectionModel> {
         val sections = locationDao.getSections()
-        val allData = if (sections.isEmpty()) {
+        return if (sections.isEmpty()) {
             val initialList = getInitialSectionsData()
             initialList.forEach { sectionModel ->
                 locationDao.addSectionData(sectionModel = sectionModel)
@@ -27,10 +37,6 @@ class LocationDbStorage(
             initialList
         }else {
             sections.allSectionDataToStorage()
-        }
-
-        return flow {
-            emit(allData)
         }
     }
 
@@ -56,16 +62,19 @@ class LocationDbStorage(
                 PhotoEntity(uri = it.uriStr, idLocation = it.idLocation)
             }
         )
-        getAllSections()
+        _sectionsFlow.update {
+            getSectionsFromDb()
+        }
     }
 
     override suspend fun updatSectionNameById(sectionId: Int, name: String) {
         locationDao.updateSectionNameById(id = sectionId, name = name)
-        getAllSections()
     }
 
     override suspend fun deletePhotos(photosId: List<Int>) {
         locationDao.deletePhotosByIds(ids = photosId)
-        getAllSections()
+        _sectionsFlow.update {
+            getSectionsFromDb()
+        }
     }
 }

@@ -16,6 +16,7 @@ import com.maxbay.location.presentation.models.screens.Screen
 import com.maxbay.location.presentation.models.setcionData.PhotoDeleteMode
 import com.maxbay.location.presentation.models.setcionData.SectionUi
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class LocationViewModel(
@@ -74,7 +75,7 @@ class LocationViewModel(
 
     private fun observeSections() {
         viewModelScope.launch {
-            observeSectionsUseCase.execute().collect { sections ->
+            observeSectionsUseCase.execute().collectLatest { sections ->
                 _sections.postValue(uiMapper.sectionsToUI(sections = sections))
             }
         }

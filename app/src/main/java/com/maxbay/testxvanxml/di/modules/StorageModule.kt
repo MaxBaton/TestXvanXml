@@ -7,10 +7,12 @@ import com.maxbay.location.data.storage.db.dao.LocationDao
 import com.maxbay.testxvanxml.database.AppDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class StorageModule {
     @Provides
+    @Singleton
     fun provideLocationStorage(locationDao: LocationDao): LocationStorage {
         return LocationDbStorage(locationDao = locationDao)
     }
