@@ -39,6 +39,12 @@ class LocationFragment: Fragment(R.layout.fragment_location) {
             },
             onAddPhotos = { locationId ->
                 locationViewModel.openGallery(locationId = locationId)
+            },
+            onLongPhotoClick = { photoId ->
+                requireContext().showShortToast(message = "on long click $photoId")
+            },
+            onPhotoClick = { photoId ->
+                requireContext().showShortToast(message = "onclick $photoId")
             }
         )
     }

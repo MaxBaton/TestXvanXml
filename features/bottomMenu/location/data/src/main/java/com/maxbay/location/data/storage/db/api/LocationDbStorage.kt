@@ -56,6 +56,7 @@ class LocationDbStorage(
                 PhotoEntity(uri = it.uriStr, idLocation = it.idLocation)
             }
         )
+        getAllSections()
     }
 
     override suspend fun updatSectionNameById(sectionId: Int, name: String) {

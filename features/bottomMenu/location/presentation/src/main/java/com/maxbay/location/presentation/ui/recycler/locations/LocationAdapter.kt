@@ -7,7 +7,9 @@ import com.maxbay.location.presentation.databinding.LocationItemBinding
 import com.maxbay.location.presentation.models.setcionData.LocationUi
 
 class LocationAdapter(
-    private val onAddPhotos: (locationId: Int) -> Unit
+    private val onAddPhotos: (locationId: Int) -> Unit,
+    private val onLongPhotoClick: (id: Int) -> Unit,
+    private val onPhotoClick: (id: Int) -> Unit
 ): ListAdapter<LocationUi, LocationViewHolder>(LocationDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         return LocationViewHolder(
@@ -16,7 +18,9 @@ class LocationAdapter(
                 parent,
                 false
             ),
-            onAddPhotos = onAddPhotos
+            onAddPhotos = onAddPhotos,
+            onLongPhotoClick = onLongPhotoClick,
+            onPhotoClick = onPhotoClick
         )
     }
 

@@ -8,7 +8,9 @@ import com.maxbay.location.presentation.models.setcionData.SectionUi
 
 class SectionAdapter(
     private val onChangeSectionName: (sectionId: Int, name: String) -> Unit,
-    private val onAddPhotos: (locationId: Int) -> Unit
+    private val onAddPhotos: (locationId: Int) -> Unit,
+    private val onLongPhotoClick: (id: Int) -> Unit,
+    private val onPhotoClick: (id: Int) -> Unit
 ): ListAdapter<SectionUi, SectionViewHolder>(SectionDiffUtils()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SectionViewHolder {
         return SectionViewHolder(
@@ -18,7 +20,9 @@ class SectionAdapter(
                 false
             ),
             onChangeSectionName = onChangeSectionName,
-            onAddPhotos = onAddPhotos
+            onAddPhotos = onAddPhotos,
+            onLongPhotoClick = onLongPhotoClick,
+            onPhotoClick = onPhotoClick
         )
     }
 

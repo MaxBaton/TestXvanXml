@@ -11,10 +11,16 @@ import com.maxbay.location.presentation.ui.recycler.locations.LocationAdapter
 class SectionViewHolder(
     private val binding: SectionItemBinding,
     private val onChangeSectionName: (sectionId: Int, name: String) -> Unit,
-    private val onAddPhotos: (locationId: Int) -> Unit
+    private val onAddPhotos: (locationId: Int) -> Unit,
+    private val onLongPhotoClick: (id: Int) -> Unit,
+    private val onPhotoClick: (id: Int) -> Unit
 ): RecyclerView.ViewHolder(binding.root) {
     private val locationAdapter by lazy {
-        LocationAdapter(onAddPhotos = onAddPhotos)
+        LocationAdapter(
+            onAddPhotos = onAddPhotos,
+            onLongPhotoClick = onLongPhotoClick,
+            onPhotoClick = onPhotoClick
+        )
     }
 
     fun bind(section: SectionUi) {
