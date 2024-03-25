@@ -10,5 +10,7 @@
     <dimen name="section_header_icon_1_margin_top">16dp</dimen>
     <dimen name="section_header_text_margin_top">16dp</dimen>
     <dimen name="section_header_icon_2_margin_top">40dp</dimen>
-    <dimen name="section_header_input_margin">32dp</dimen>
+    <dimen name="section_header_input_margin">16dp</dimen>
+    <dimen name="location_item_content_margin">16dp</dimen>
+    <dimen name="location_photos_recycler_margin_top">16dp</dimen>
 </resources>

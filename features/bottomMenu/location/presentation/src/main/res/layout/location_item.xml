@@ -4,47 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/location_item_height"
-    android:background="?attr/backgroundColor"
+    android:background="@drawable/section_background"
     tools:background="@color/white">
 
-    <TextView
-        android:id="@+id/tv_location_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Text" />
-
-    <ImageButton
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/btn_add_photo_description"
-        android:src="@drawable/ic_location_test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_photos"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/tv_location_name"
-        app:layout_constraintEnd_toEndOf="@id/btn_add"
-        app:layout_constraintTop_toBottomOf="@id/btn_add"
+        android:background="@drawable/section_input_background"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/photo_item"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/location_item_content_margin">
 
-    <Button
+        <TextView
+            android:id="@+id/tv_location_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Text" />
+
+        <ImageButton
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/btn_add_photo_description"
+            android:src="@drawable/ic_add"
+            android:layout_marginTop="@dimen/location_photos_recycler_margin_top"
+            android:layout_marginEnd="@dimen/location_photos_recycler_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorSecondary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_photos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/location_photos_recycler_margin_top"
+            android:layout_marginBottom="@dimen/location_photos_recycler_margin_top"
+            app:layout_constraintStart_toStartOf="@id/tv_location_name"
+            app:layout_constraintEnd_toEndOf="@id/btn_add"
+            app:layout_constraintTop_toBottomOf="@id/btn_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/photo_item"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_delete"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/delete"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorPrimary"
+        app:backgroundTint="?attr/colorTertiary"
         android:visibility="gone"
         tools:visibility="visible"
         />
