@@ -4,14 +4,14 @@
     <style name="Theme.TestXvan" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
-        <item name="backgroundColor">@color/grey_nurse</item>
+        <item name="backgroundColor">@color/weathered_stone</item>
         <item name="colorSecondary">@color/maui_mist</item>
         <item name="colorSurface">@color/aime</item>
         <item name="colorPrimaryContainer">@color/black</item>
         <item name="colorTertiary">@color/fuzzy_wuzzy</item>
         <item name="colorOnSurface">@color/angry_pasta</item>
         <item name="colorOnPrimaryContainer">@color/lead</item>
-        <item name="colorSurfaceVariant">@color/deep_sea_grey</item>
+        <item name="colorSurfaceVariant">@color/grey_nurse</item>
 
         <item name="textAppearanceHeadlineLarge">@style/HeadlineLarge</item>
         <item name="textAppearanceTitleLarge">@style/TitleLarge</item>

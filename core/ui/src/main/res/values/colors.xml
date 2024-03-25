@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="weathered_stone">#F5F5F5</color>
     <color name="aime">#EEE5E0</color>
     <color name="lead">#212020</color>
     <color name="maui_mist">#EDF3F4</color>

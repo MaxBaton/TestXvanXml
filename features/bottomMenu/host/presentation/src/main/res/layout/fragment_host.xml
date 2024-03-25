@@ -11,8 +11,10 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
+        app:tabIconTint="@color/tab_icon_color"
         android:layout_height="?android:attr/actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="?attr/colorPrimary"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

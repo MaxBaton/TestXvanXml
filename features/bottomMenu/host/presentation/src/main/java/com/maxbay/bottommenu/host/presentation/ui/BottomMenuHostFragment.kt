@@ -1,6 +1,7 @@
 package com.maxbay.presentation.ui
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -8,6 +9,7 @@ import com.maxbay.bottommenu.host.presentation.R
 import com.maxbay.bottommenu.host.presentation.databinding.FragmentHostBinding
 import com.maxbay.presentation.di.BottomMenuHostFeatureDepsProvider
 import com.maxbay.presentation.di.DaggerBottomMenuHostComponent
+
 
 class BottomMenuHostFragment: Fragment(R.layout.fragment_host) {
     private var binding: FragmentHostBinding? = null
@@ -47,5 +49,12 @@ class BottomMenuHostFragment: Fragment(R.layout.fragment_host) {
         super.onDestroyView()
 
         binding = null
+    }
+
+    private fun getColorByAttr(attrColor: Int): Int {
+        val typedValue = TypedValue()
+        val theme = requireContext().theme
+        theme.resolveAttribute(attrColor, typedValue, true)
+        return typedValue.data
     }
 }
